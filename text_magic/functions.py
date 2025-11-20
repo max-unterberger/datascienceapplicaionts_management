@@ -1,7 +1,12 @@
 from string import punctuation
-
+from textblob import TextBlob
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+import nltk
 
 PUNCTUATION = punctuation + "“”"
+
+nltk.data.path.append('nltk_data')
 
 def to_lower(text: str) -> str:
     return text.lower()
@@ -23,9 +28,11 @@ def clean_stopwords(text: str, language:str="english") -> str:
     for word in words:
         if word in stopwords.words(language):
             words.remove(word)
+    return " ".join(words)
 
 def pipeline(text:str) -> str:
     text = to_lower(text)
     text = clean_punctuation(text)
     text = clean_strip(text)
+    text = clean_stopwords(text)
     return text

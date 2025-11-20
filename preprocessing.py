@@ -4,11 +4,10 @@ from nltk.stem import PorterStemmer
 from string import punctuation
 from text_magic.functions import pipeline
 
-
 with open(file="./quotes/quote_1_0.txt", mode="r", encoding="utf-8") as file:
     text = file.read()
 
-words = pipeline(text).split(" ")
+words = pipeline(text)
 
 print(words)
 
