@@ -5,7 +5,7 @@ from nltk.stem import PorterStemmer
 import nltk
 
 PUNCTUATION = punctuation + "“”"
-
+# Add nltk data path if needed
 nltk.data.path.append('nltk_data')
 
 def to_lower(text: str) -> str:
@@ -24,11 +24,11 @@ def clean_strip(text: str) -> str:
         return text.strip()
 
 def clean_stopwords(text: str, language:str="english") -> str:
-    words = text.split(" ")
+    words = text.split(" ") #split into list 
     for word in words:
         if word in stopwords.words(language):
             words.remove(word)
-    return " ".join(words)
+    return " ".join(words) #convert back to string
 
 def pipeline(text:str) -> str:
     text = to_lower(text)
